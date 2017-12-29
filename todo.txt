@@ -1,0 +1,5 @@
+Named paremeters:
+  def logHistoryFile(to: [required] fname, since: startDate as date):
+		print fname
+    
+  logHistoryFile(to: "test.txt", since: date.Now - 10s)
