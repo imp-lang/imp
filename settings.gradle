@@ -1,0 +1,32 @@
+def includeFromDir(String dir, String name) {
+  include name
+  project(":$name").projectDir = new File(dir, name)
+}
+
+def includeSrcProject(String name) {
+  includeFromDir 'src', name
+}
+
+def includeToolProject(String name) {
+  includeFromDir 'tools', name
+}
+
+def srcProjects = [
+	'Imp.Lang',
+	'Imp.Lang.Compiler',
+	'Imp.Lang.Parser',
+	'Imp.Lang.Interpreter',
+	'Imp.Lang.Extensions',
+	'Imp.Lang.PatternMatching',
+	'Imp.Lang.Useful',
+	'Imp.Lang.CodeDom',
+	'impc',
+	'impi',
+	'impish',
+]
+srcProjects.each {
+  includeSrcProject it
+}
+
+includeToolProject 'RetargetAssembly'
+
